@@ -137,7 +137,7 @@ class Page
             $this->header = null;
             $this->content = null;
         }
-        return $file->raw();
+        return $file ? $file->raw() : '';
     }
 
     /**
@@ -420,7 +420,7 @@ class Page
         if ($file) {
             $file->filename($this->filePath());
             $file->header((array) $this->header());
-            $file->markdown($this->content());
+            $file->markdown($this->raw_content);
             $file->save();
         }
     }
